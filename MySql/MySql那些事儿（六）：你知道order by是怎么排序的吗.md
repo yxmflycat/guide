@@ -70,3 +70,7 @@ alter table t add index city_user(city, name);
 神奇的Using filesort不见了看到了没，也就是不需要排序了。由于(city,name)这个联合索引本身有序，只要查出所需数据就返回。那么这个sql还能减少内存操作吗？答案是肯定的，因为上面的联合索引中不包含age字段所有需要回表找到age字段再返回，我们把age也加到这个联合index中的话直接就冲二级索引树中拿到数据直接返回，不需要通过id回表找到整行记录。
 
 到此为止我们我们也基本了解到了mysql的一些主要排序方式与sort_buffer的介绍，相信大家对order by子句一下子豁然开朗了吧。没事自己多看看，多想想。学使用explain和optimize trace这两个利器，找出sql的问题所在。好了本节内容我们就说完了，喜欢的请点下右下边的“在看”，或者分享给你的朋友们。文中有错误或者你对本文有疑问的地方很欢迎私信我。
+
+
+参考资料：
+>‘https://time.geekbang.org/column/intro/139’
