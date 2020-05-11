@@ -60,5 +60,5 @@ happens-before的前后两个操作不会被重排序且后者对前者的内存
 5. 线程终结规则：线程中的任何动作都 happens-before 于其他线程检测到这个线程已经终结、或者从 Thread.join 调用中成功返回，或 Thread.isAlive 返回 false。假定线程A在执行的过程中，通过制定ThreadB.join()等待线程B终止，那么线程B在终止之前对共享变量的修改在线程A等待返回后可见。
 6. 传递性规则：如果A happens-before B，且B happens-before C，那么A happens-before C；
 7. 线程中断规则：对线程interrupt()方法的调用，happens-before于被中断线程的代码检测到中断事件的发生，可以通过Thread.interrupted()方法检测到线程是否有中断发生。
-##结尾
+## 结尾
 到这里关于Java HotSpot的内存模型基本上是说完了，其实我们就是围绕多线程的三大处理难题展开说明，以及他们背后的实现原理，很多细节地方还是需要有兴趣的朋友自己下去仔细查阅相关资料来加深理解。
